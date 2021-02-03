@@ -4,7 +4,13 @@
 	"description": "xxxxxxx",
 	"version": "0.0.1",
 	"author": "Tacey Wong",
-    "publisher": "Bamboo",
+	"publisher": "Bamboo",
+	"license": "MIT",
+	"icon": "resources/bamboo.png",
+	"repository": {
+        "type": "git",
+        "url": "https://github.com/TaceyWong/bamboo"
+    },
 	"engines": {
 		"vscode": "^1.36.0"
 	},
@@ -21,7 +27,6 @@
 		"onCommand:bamboo.context.clear",
 		"onCommand:bamboo.comment.quickAdd",
 		"onCommand:bamboo.comment.quickClear"
-
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
@@ -29,32 +34,32 @@
 			{
 				"command": "bamboo.context.refresh",
 				"title": "刷新Go上下文环境",
-				"icon":"resources/refresh.png"
+				"icon": "resources/refresh.png"
 			},
 			{
 				"command": "bamboo.context.update",
 				"title": "更新Go上下文环境项",
-				"icon":"resources/refresh.png"
+				"icon": "resources/refresh.png"
 			},
 			{
 				"command": "bamboo.context.delete",
 				"title": "删除Go上下文环境项",
-				"icon":"resources/clear.png"
+				"icon": "resources/clear.png"
 			},
 			{
 				"command": "bamboo.context.clear",
 				"title": "清除Go上下文环境用户添加项",
-				"icon":"resources/clear.png"
+				"icon": "resources/clear.png"
 			},
 			{
 				"command": "bamboo.comment.quickAdd",
 				"title": "快速添加注释",
-				"icon":"resources/comment.png"
+				"icon": "resources/comment.png"
 			},
 			{
 				"command": "bamboo.comment.quickClear",
 				"title": "快速清除注释",
-				"icon":"resources/clear.png"
+				"icon": "resources/clear.png"
 			}
 		],
 		"viewsContainers": {
@@ -66,18 +71,18 @@
 				}
 			]
 		},
-		"views":{
-			"bamboo":[
+		"views": {
+			"bamboo": [
 				{
-					"id":"bamboo.context",
+					"id": "bamboo.context",
 					"name": "当前Golang环境"
 				},
 				{
-					"id":"bamboo.gorelease",
+					"id": "bamboo.gorelease",
 					"name": "GoRelease相关配置"
 				},
 				{
-					"id":"bamboo.about",
+					"id": "bamboo.about",
 					"name": "关于本扩展"
 				}
 			]
@@ -86,12 +91,12 @@
 			"view/title": [
 				{
 					"command": "bamboo.context.refresh",
-					"when":"view == context",
+					"when": "view == context",
 					"group": "navigation@0"
 				},
 				{
 					"command": "bamboo.context.clear",
-					"when":"view == context",
+					"when": "view == context",
 					"group": "navigation@1"
 				}
 			],
@@ -110,15 +115,15 @@
 			"editor/title": [
 				{
 					"command": "bamboo.comment.quickAdd",
-					"title":"快速注释",
+					"title": "快速注释",
 					"group": "navigation",
-					"when":"resourceLangId == python"
+					"when": "resourceLangId == python"
 				},
 				{
 					"command": "bamboo.comment.quickClear",
-					"title":"快速清除注释",
+					"title": "快速清除注释",
 					"group": "navigation",
-					"when":"resourceLangId == python"
+					"when": "resourceLangId == python"
 				}
 			]
 		}
