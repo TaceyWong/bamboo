@@ -12,6 +12,9 @@
 		"Other"
 	],
 	"activationEvents": [
+		"onView:bamboo.about",
+		"onView:bamboo.context",
+		"onView:bamboo.gorelease",
 		"onCommand:bamboo.context.refresh",
 		"onCommand:bamboo.context.update",
 		"onCommand:bamboo.context.delete",
@@ -66,15 +69,15 @@
 		"views":{
 			"bamboo":[
 				{
-					"id":"context",
+					"id":"bamboo.context",
 					"name": "当前Golang环境"
 				},
 				{
-					"id":"gorelease",
+					"id":"bamboo.gorelease",
 					"name": "GoRelease相关配置"
 				},
 				{
-					"id":"about",
+					"id":"bamboo.about",
 					"name": "关于本扩展"
 				}
 			]
