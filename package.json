@@ -1,0 +1,150 @@
+{
+	"name": "bamboo",
+	"displayName": "Bamboo",
+	"description": "xxxxxxx",
+	"version": "0.0.1",
+	"author": "Tacey Wong",
+    "publisher": "Bamboo",
+	"engines": {
+		"vscode": "^1.36.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:bamboo.context.refresh",
+		"onCommand:bamboo.context.update",
+		"onCommand:bamboo.context.delete",
+		"onCommand:bamboo.context.clear",
+		"onCommand:bamboo.comment.quickAdd",
+		"onCommand:bamboo.comment.quickClear"
+
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "bamboo.context.refresh",
+				"title": "刷新Go上下文环境",
+				"icon":"resources/refresh.png"
+			},
+			{
+				"command": "bamboo.context.update",
+				"title": "更新Go上下文环境项",
+				"icon":"resources/refresh.png"
+			},
+			{
+				"command": "bamboo.context.delete",
+				"title": "删除Go上下文环境项",
+				"icon":"resources/clear.png"
+			},
+			{
+				"command": "bamboo.context.clear",
+				"title": "清除Go上下文环境用户添加项",
+				"icon":"resources/clear.png"
+			},
+			{
+				"command": "bamboo.comment.quickAdd",
+				"title": "快速添加注释",
+				"icon":"resources/comment.png"
+			},
+			{
+				"command": "bamboo.comment.quickClear",
+				"title": "快速清除注释",
+				"icon":"resources/clear.png"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "bamboo",
+					"title": "Bamboo:Golang开发便捷工具",
+					"icon": "resources/bamboo.svg"
+				}
+			]
+		},
+		"views":{
+			"bamboo":[
+				{
+					"id":"context",
+					"name": "当前Golang环境"
+				},
+				{
+					"id":"gorelease",
+					"name": "GoRelease相关配置"
+				},
+				{
+					"id":"about",
+					"name": "关于本扩展"
+				}
+			]
+		},
+		"menus": {
+			"view/title": [
+				{
+					"command": "bamboo.context.refresh",
+					"when":"view == context",
+					"group": "navigation@0"
+				},
+				{
+					"command": "bamboo.context.clear",
+					"when":"view == context",
+					"group": "navigation@1"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "bamboo.context.update",
+					"when": "view == context",
+					"group": "inline"
+				},
+				{
+					"command": "bamboo.context.delete",
+					"when": "view == context",
+					"group": "inline"
+				}
+			],
+			"editor/title": [
+				{
+					"command": "bamboo.comment.quickAdd",
+					"title":"快速注释",
+					"group": "navigation",
+					"when":"resourceLangId == python"
+				},
+				{
+					"command": "bamboo.comment.quickClear",
+					"title":"快速清除注释",
+					"group": "navigation",
+					"when":"resourceLangId == python"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run package",
+		"compile": "webpack --config ./build/node-extension.webpack.config.js",
+		"watch": "webpack --watch --config ./build/node-extension.webpack.config.js",
+		"package": "webpack --mode production --devtool hidden-source-map --config ./build/node-extension.webpack.config.js",
+		"test-compile": "tsc -p ./",
+		"test-watch": "tsc -watch -p ./",
+		"pretest": "npm run test-compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.52.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"eslint": "^7.15.0",
+		"@typescript-eslint/eslint-plugin": "^4.9.0",
+		"@typescript-eslint/parser": "^4.9.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.1.3",
+		"typescript": "^4.1.2",
+		"vscode-test": "^1.4.1",
+		"ts-loader": "^8.0.11",
+		"webpack": "^5.10.0",
+		"webpack-cli": "^4.2.0"
+	}
+}
